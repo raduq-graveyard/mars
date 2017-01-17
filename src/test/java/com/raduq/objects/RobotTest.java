@@ -80,6 +80,6 @@ public class RobotTest {
     @Test
     public void canMove() throws Exception {
         Robot robot = new Robot();
-        Assert.assertEquals("0,1,N", robot.move().location());
+        Assert.assertEquals("0,1,N", robot.move(new Planet()).location());
     }
 }

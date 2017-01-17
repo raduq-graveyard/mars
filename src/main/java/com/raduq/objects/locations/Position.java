@@ -1,5 +1,7 @@
 package com.raduq.objects.locations;
 
+import java.util.Objects;
+
 /**
  * Representa uma posição em um terreno.
  * Created by raduq on 17/01/17.
@@ -12,7 +14,7 @@ public class Position {
     /**
      * Cria uma posicao com os valores recebidos.
      */
-    public Position(int x, int y){
+    public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -20,7 +22,7 @@ public class Position {
     /**
      * Adiciona +1 à posicao X.
      */
-    public Position plusX(){
+    public Position plusX() {
         this.x += 1;
         return this;
     }
@@ -28,7 +30,7 @@ public class Position {
     /**
      * Adiciona +1 à posicao Y.
      */
-    public Position plusY(){
+    public Position plusY() {
         this.y += 1;
         return this;
     }
@@ -36,7 +38,7 @@ public class Position {
     /**
      * Remove -1 da posicao X.
      */
-    public Position minusX(){
+    public Position minusX() {
         this.x -= 1;
         return this;
     }
@@ -44,20 +46,29 @@ public class Position {
     /**
      * Remove -1 da posicao Y.
      */
-    public Position minusY(){
+    public Position minusY() {
         this.y -= 1;
         return this;
     }
 
-    public boolean isValidAxisX(int maxX){
-        return isValidAxis(x,maxX);
+    /**
+     * Valida se a posicao X é valida de acordo com um valor máximo recebido.
+     */
+    public boolean isValidAxisX(int maxX) {
+        return isValidAxis(x, maxX);
     }
 
-    public boolean isValidAxisY(int maxY){
-        return isValidAxis(y,maxY);
+    /**
+     * Valida se a posicao Y é valida de acordo com um valor máximo recebido.
+     */
+    public boolean isValidAxisY(int maxY) {
+        return isValidAxis(y, maxY);
     }
 
-    private boolean isValidAxis(int n, int maxN){
+    /**
+     * Valida se a posicao 'N' é valida de acordo com um valor máximo recebido.
+     */
+    private boolean isValidAxis(int n, int maxN) {
         return n >= 0 && n < maxN;
     }
 
@@ -69,7 +80,20 @@ public class Position {
         return y;
     }
 
-    public String toString(){
+    public String toString() {
         return String.valueOf(x) + "," + String.valueOf(y);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Position position = (Position) o;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

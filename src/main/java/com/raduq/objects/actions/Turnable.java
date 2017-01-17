@@ -8,10 +8,10 @@ import com.raduq.objects.locations.Position;
  * Métodos caracteristicos de objetos que podem se girar em um Explorable.
  * Created by raduq on 17/01/17.
  */
-public interface Turnable <R> {
+public interface Turnable {
 
     /**
      * Gira o objeto para a direção especificada.
      */
-    R turn(Direction direction);
+    Turnable turn(Direction direction);
 }

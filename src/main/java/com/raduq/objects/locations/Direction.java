@@ -10,8 +10,10 @@ import java.util.Optional;
  */
 public enum Direction {
 
+    /** Esquerda */
     LEFT("L"),
 
+    /** Direita */
     RIGHT("R");
 
     String value;
@@ -26,6 +28,6 @@ public enum Direction {
 
     public static Optional<Direction> getDirection(String value){
         List<Direction> allValues = Arrays.asList(values());
-        return allValues.stream().filter(vl -> vl.value.equals(value)).findFirst();
+        return allValues.stream().filter(vl -> vl.value.toLowerCase().equals(value.toLowerCase())).findFirst();
     }
 }

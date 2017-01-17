@@ -1,6 +1,5 @@
 package com.raduq.objects.actions;
 
-import com.raduq.objects.Planet;
 import com.raduq.objects.locations.Position;
 
 /**
@@ -13,5 +12,5 @@ public interface Explorable {
      * Valida se a Position recebia pode ser aplicada no terreno. <br/>
      * Caso ela extrapole os limites máximos, deve lancar exception.
      */
-    Planet validateMove(Position position);
+    Explorable validatePosition(Position position);
 }

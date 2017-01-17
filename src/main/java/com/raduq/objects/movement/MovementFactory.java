@@ -7,10 +7,12 @@ import com.raduq.objects.movement.directions.SouthMovement;
 import com.raduq.objects.movement.directions.WestMovement;
 
 /**
+ * Factory para escolha de direção de movimentação.
  * Created by raduq on 17/01/17.
  */
 public class MovementFactory {
 
+    /** Define qual classe fará a movimentação de acordo com a Orientation recebida. */
     public Movement getMovement(Orientation orientation){
         switch (orientation){
             case NORTH: return new NorthMovement();

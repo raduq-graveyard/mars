@@ -25,7 +25,8 @@ public class Planet implements Explorable{
         this.sizeY = sizeY;
     }
 
-    public Planet validateMove(Position position){
+    /** Valida se a posição recebida é valida. */
+    public Planet validatePosition(Position position){
         if(!position.isValidAxisX(this.sizeX)){
             throw new RuntimeException("Não é possível mover para  a posição X -> " + position.getX() + " - Fora dos limites.");
         }

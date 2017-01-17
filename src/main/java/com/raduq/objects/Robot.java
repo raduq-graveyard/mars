@@ -1,5 +1,7 @@
 package com.raduq.objects;
 
+import com.raduq.objects.actions.Explorable;
+import com.raduq.objects.actions.Placeable;
 import com.raduq.objects.locations.Direction;
 import com.raduq.objects.locations.Orientation;
 import com.raduq.objects.locations.Position;
@@ -11,7 +13,7 @@ import com.raduq.objects.movement.MovementFactory;
  * Representa um robô que anda no planeta.
  * Created by raduq on 17/01/17.
  */
-public class Robot implements Movable <Robot>, Turnable <Robot>{
+public class Robot implements Movable, Turnable, Placeable {
     private Position position;
     private Orientation orientation;
 
@@ -31,9 +33,11 @@ public class Robot implements Movable <Robot>, Turnable <Robot>{
      * Move o robô uma posição para a orientação atual.
      * @return instancia de robô movida para a posição.
      */
-    public Robot move(){
+    public Robot move(Explorable explorable){
         MovementFactory movementFactory = new MovementFactory();
-        this.position = movementFactory.getMovement(this.orientation).move(this.position);
+        Position newPosition = movementFactory.getMovement(this.orientation).move(this.position);
+        explorable.validatePosition(newPosition);
+        this.position = newPosition;
         return this;
     }
 
@@ -47,11 +51,14 @@ public class Robot implements Movable <Robot>, Turnable <Robot>{
         return this;
     }
 
+    /** Retorna uma posicao com valores de X e Y. */
     public Position getPosition(){
         return this.position;
     }
 
-    public String location(){
-        return position.toString() + "," + orientation.getValue();
+    /** Retorna a orientacao do objeto em Norte, Sul, Leste ou Oeste **/
+    public Orientation getOrientation(){
+        return this.orientation;
     }
+
 }
