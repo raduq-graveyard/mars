@@ -1,5 +1,6 @@
 package com.raduq.objects;
 
+import com.raduq.exception.MarsException;
 import com.raduq.objects.actions.Explorable;
 import com.raduq.objects.locations.Position;
 
@@ -28,10 +29,10 @@ public class Planet implements Explorable{
     /** Valida se a posição recebida é valida. */
     public Planet validatePosition(Position position){
         if(!position.isValidAxisX(this.sizeX)){
-            throw new RuntimeException("Não é possível mover para  a posição X -> " + position.getX() + " - Fora dos limites.");
+            throw new MarsException("Não é possível mover para  a posição X -> " + position.getX() + " - Fora dos limites.");
         }
         if(!position.isValidAxisY(this.sizeY)){
-            throw new RuntimeException("Não é possível mover para  a posição Y -> " + position.getY() + " - Fora dos limites.");
+            throw new MarsException("Não é possível mover para  a posição Y -> " + position.getY() + " - Fora dos limites.");
         }
         return this;
     }

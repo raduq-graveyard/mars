@@ -11,6 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
+ * Runner da aplicação quando embbed.
  * @author raduq em 17/01/17
  */
 @ComponentScan

@@ -1,9 +1,8 @@
 package com.raduq.service;
 
+import com.raduq.exception.MarsException;
 import com.raduq.objects.Planet;
 import com.raduq.objects.Robot;
-import com.raduq.objects.actions.Placeable;
-import com.raduq.objects.locations.Direction;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,6 +14,7 @@ import java.util.Optional;
 @Service
 public class NavigationService {
 
+    /** Executa a navegação de um robot em um planet de acordo com uma lista de commandos. */
     public String navigate(String command){
         Planet planet = new Planet();
         Robot robot = new Robot();
@@ -22,7 +22,7 @@ public class NavigationService {
 
         Optional<Robot> finalRobot = instruction.execute(robot,planet);
         if(!finalRobot.isPresent()){
-            throw new RuntimeException("Movimentação inválida");
+            throw new MarsException("Movimentação inválida");
         }
         return finalRobot.get().location();
     }
