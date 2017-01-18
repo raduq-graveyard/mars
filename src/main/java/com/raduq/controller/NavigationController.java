@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
  * Created by raduq on 17/01/17.
  */
 @RestController
-@RequestMapping(value = "/rest")
 public class NavigationController {
 
     @Autowired
@@ -23,7 +22,7 @@ public class NavigationController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/mars/{command}")
-    public ResponseEntity navigate(@PathVariable String command) {
+    public ResponseEntity navigate(@PathVariable("command") String command) {
         try {
             return ResponseEntity.ok().contentType(MediaType.TEXT_PLAIN).body(navigationService.navigate(command));
         } catch (Exception e) {
