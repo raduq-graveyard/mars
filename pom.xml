@@ -30,10 +30,11 @@
       <!-- Tests -->
       <junit.version>4.12</junit.version>
 
-
       <!-- Plugins -->
       <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
       <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+
+      <start-class>com.raduq.MarsApplication</start-class>
 
   </properties>
 
@@ -94,6 +95,21 @@
     <build>
           <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <mainClass>${start-class}</mainClass>
+                    </configuration>
+                </plugin>
+
                 <!-- Plugin para copiar os jars dependencia -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
